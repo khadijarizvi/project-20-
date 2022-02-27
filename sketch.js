@@ -21,10 +21,11 @@ function preload(){
 function setup(){
   
 //create the canvas and adjust the window sizes to suit the device 
-
+createCanvas(windowWidth,windowHeight);
 path=createSprite(width/2,200);
 path.addImage(pathImg);
 path.velocityY = 4;
+
 
 
 //creating boy running
@@ -50,7 +51,9 @@ function draw() {
   boy.collide(edges);
   
   //code to reset the background
-
+  if(path.y > windowHeight){
+    path.y = windowHeight/2;
+  }
     createCash();
     createDiamonds();
     createJwellery();
@@ -101,7 +104,7 @@ function draw() {
 function createCash() {
   if (World.frameCount % 200 == 0) {
    // Modify the positions of cash 
-    var cash = createSprite(Math.round(random(50, 350),40, 10, 10));
+    var cash = createSprite(width-400,height-940, 10, 10);
     cash.addImage(cashImg);
   cash.scale=0.12;
   cash.velocityY = 5;
@@ -112,9 +115,8 @@ function createCash() {
 
 function createDiamonds() {
   if (World.frameCount % 320 == 0) {
-       // Modify the positions of diamonds 
-
-    var diamonds = createSprite(Math.round(random(50, 350),40, 10, 10));
+       // Modify the positions of diamonds
+    var diamonds = createSprite(width-600,height-450, 10, 10);
     diamonds.addImage(diamondsImg);
   diamonds.scale=0.03;
   diamonds.velocityY = 5;
@@ -126,8 +128,7 @@ function createDiamonds() {
 function createJwellery() {
   if (World.frameCount % 410 == 0) {
     //   Modify the positions of jwellery to make them spawn throughout the available screen size.
-
-    var jwellery = createSprite(Math.round(random(50, 350),40, 10, 10));
+    var jwellery = createSprite(width-800,height-570, 10, 10);
     jwellery.addImage(jwelleryImg);
   jwellery.scale=0.13;
   jwellery.velocityY = 5;
@@ -139,8 +140,7 @@ function createJwellery() {
 function createSword(){
   if (World.frameCount % 530 == 0) {
     //   Modify the positions of sword to make them spawn throughout the available screen size.
-
-    var sword = createSprite(Math.round(random(50, 350),40, 10, 10));
+    var sword = createSprite(width-1000,height-740, 10, 10);
     sword.addImage(swordImg);
   sword.scale=0.1;
   sword.velocityY = 4;
